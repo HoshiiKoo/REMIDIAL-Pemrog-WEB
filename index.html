@@ -1,0 +1,39 @@
+{% extends 'basic.html' %}
+
+{% block judul %} Berita Terkini {% endblock %}
+
+{% block JudulKonten %}
+<br>
+<h3 class="box-title"> Dashboard Admin </h3>
+<a class="btn btn-primary" href="/tambah/" role="button">Tambah Berita</a>
+{% endblock %}
+
+{% block konten %}
+    <br>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th style="display: none !important;">ID</th>
+            <th>Tanggal</th>
+            <th>Judul</th>
+            <th>Isi Berita</th>
+            <th>Proses</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in hasil %}
+                <tr>
+                    <td style="display: none !important;"> {{row.0}} </td>
+                    <td>{{row.1}}</td>
+                    <td>{{row.2}}</td>
+                    <td>{{row.3}}</td>
+                    <td>
+                        <a href="/ubah/{{row.0}}" class="btn btn-warning"> Ubah </a><br>
+                        <a href="/hapus/{{row.0}}" class="btn btn-danger"
+                            onclick="return confirm('yakin akan menghapus {{row.2}} ?')"> Hapus </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
